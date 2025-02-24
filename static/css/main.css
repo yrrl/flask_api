@@ -1,7 +1,9 @@
 body{
     font-family: 'Courier New', Courier, monospace;
-    color: blue;
+    color: black ;
+    background-color: gray ;
 }
-table{
-    border-color: blue;
+td, th{
+    border-color: black;
+    border-width: 2px;
 }

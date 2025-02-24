@@ -1,29 +1,53 @@
 {% extends 'base.html' %}
 
 {%block head%}
-
+<style>
+    tr,td,th{
+        border: 1px solid black;
+    }
+</style>
 {% endblock %}
 
 {%block body%}
-<table>
+<table id="staffTable">
     <thead>
         <tr>
             <th>UID</th>
             <th>Firstname</th>
             <th>LastName</th>
             <th>Age</th>
+            <th>DELETE</th>
         </tr>
     </thead>
-    <tbody>
-        {%for staff in staffs%}
-        <tr>
-            <td>{{staff.id}}</td>
-            <td>{{staff.fname}}</td>
-            <td>{{staff.lname}}</td>
-            <td>{{staff.age}}</td>
-        </tr>
-        {%endfor %}
-    </tbody>
+    <tbody></tbody>
 </table>
+
+<script>
+    // Fetch Data from Flask API and Populate Table
+    function loadStaff() {
+        fetch('/api/staff')
+            .then(response => response.json())
+            .then(data => {
+                let tableBody = document.querySelector("#staffTable tbody");
+                tableBody.innerHTML = ""; // Clear existing data
+                data.forEach(staff => {
+                    let row = `
+                        <tr>
+                            <td>${staff.uid}</td>
+                            <td>${staff.fname}</td>
+                            <td>${staff.lname}</td>
+                            <td>${staff.age}</td>
+                            <td>
+                                <button onclick="deleteStaff(${staff.uid})">Delete</button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            });
+    }
+
+    loadStaff(); // Load staff when page loads
+</script>
 
 {% endblock %}

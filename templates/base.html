@@ -11,6 +11,32 @@
 </head>
 <body>
     {%block body%} {%endblock%}
-    
+    <h2>Add new user</h2>
+    <form action="{{ url_for('create_staff') }}" method="POST" id="staffform">
+        <input type="text" name="fname" placeholder="First name" required id="fname">
+        <input type="text" name="lname" placeholder="Last name" required id="lname">
+        <input type="number" name="age" placeholder="Age" required id="age">
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById('staffform').addEventListener('submit', async function(event) {
+        event.preventDefault();
+            let fname = document.getElementById('fname').value;
+            let lname = document.getElementById('lname').value;
+            let age = document.getElementById("age").value;
+
+            let response = await fetch("http://127.0.0.1:5000/api/staff",{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({fname:fname,lname:lname,age:age})
+            });
+            let result = await response.json();
+            alert(result.message);
+
+            location.reload
+
+
+        });
+    </script>
 </body>
 </html>
