@@ -46,12 +46,17 @@ def create_staff():
 
 
 
+#delete a staff
+@app.route("/api/staff/<int:uid>", methods=["DELETE"])
+def delete_staff(uid):
+    staff = Staff.query.get(uid)
+    if not staff:
+        return jsonify({"error": "Staff not found"}), 404
 
-@app.route('/delete/<int:uid>', methods =['DELETE'])
-def delete(uid):
-    Staff_delete = Staff.query.get(uid)
+    db.session.delete(staff)
+    db.session.commit()
 
-    return {"message": "delete successfully"}
+    return jsonify({"message": "Staff deleted successfully"})
 
 
 if __name__ == '__main__':
