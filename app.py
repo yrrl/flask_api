@@ -6,9 +6,24 @@ app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:qwerty123@localhost
 db=SQLAlchemy(app)
 
 
-@app.route('/', methods=['GET'])
+#@app.route('/', methods=['GET'])
+#def index():
+    #return render_template('index.html')
+
+
+#TO IMPORT DB
+class staff(db.Model):
+    __tablename__ = 'staff'
+    uid = db.Column(db.Integer, primary_key=True)
+    fname = db.Column(db.String(255))
+    lname = db.Column(db.String(255))
+    age = db.Column(db.Integer)
+
+
+@app.route('/')
 def index():
-    return render_template('index.html')
+    staffs = staff.query.all()
+    return render_template('index.html', staffs = staffs)
 
 
 

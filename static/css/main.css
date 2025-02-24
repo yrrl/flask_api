@@ -2,3 +2,6 @@ body{
     font-family: 'Courier New', Courier, monospace;
     color: blue;
 }
+table{
+    border-color: blue;
+}

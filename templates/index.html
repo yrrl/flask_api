@@ -5,5 +5,25 @@
 {% endblock %}
 
 {%block body%}
-<h1>template</h1>
+<table>
+    <thead>
+        <tr>
+            <th>UID</th>
+            <th>Firstname</th>
+            <th>LastName</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for staff in staffs%}
+        <tr>
+            <td>{{staff.id}}</td>
+            <td>{{staff.fname}}</td>
+            <td>{{staff.lname}}</td>
+            <td>{{staff.age}}</td>
+        </tr>
+        {%endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
