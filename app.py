@@ -6,9 +6,7 @@ app.config['SQLALCHEMY_DATABASE_URI']='postgresql://postgres:qwerty123@localhost
 db=SQLAlchemy(app)
 
 
-#@app.route('/', methods=['GET'])
-#def index():
-    #return render_template('index.html')
+
 
 
 #TO IMPORT DB
