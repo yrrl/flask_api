@@ -11,7 +11,9 @@
 </head>
 <body>
     {%block body%} {%endblock%}
+    <hr color="black">
     <h2>Add new user</h2>
+    
     <form action="{{ url_for('create_staff') }}" method="POST" id="staffform">
         <input type="text" name="fname" placeholder="First name" required id="fname">
         <input type="text" name="lname" placeholder="Last name" required id="lname">
@@ -37,6 +39,8 @@
 
 
         });
+
+        
     </script>
 </body>
 </html>

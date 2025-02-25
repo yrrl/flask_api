@@ -2,8 +2,34 @@ body{
     font-family: 'Courier New', Courier, monospace;
     color: black ;
     background-color: gray ;
+    
+    margin: auto;
+
 }
-td, th{
-    border-color: black;
-    border-width: 2px;
+table {
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid black;
+    padding-bottom: 20px;
+   
+}
+
+td, th {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    padding: 20px;
+}
+
+button{
+    background-color: rgb(172, 171, 171);
+}
+form input[type="text"], 
+form input[type="number"] { 
+    background-color: rgb(172, 171, 171);
 }

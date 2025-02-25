@@ -59,5 +59,20 @@ def delete_staff(uid):
     return jsonify({"message": "Staff deleted successfully"})
 
 
+@app.route("/api/staff/<int:uid>", methods=["PUT"])
+def staff_edit(uid):
+    staff = Staff.query.get(uid)
+    if not staff_edit:
+        return jsonify({"error":"staff not found"}),404
+    data = request.json
+    staff.fname = data.get("fname", staff.fname)  
+    staff.lname = data.get("lname", staff.lname)
+    staff.age = data.get("age", staff.age)
+
+    db.session.commit()
+    return jsonify({"message": "Staff updated successfully"})
+                                   
+
+
 if __name__ == '__main__':
     app.run(debug=True)
